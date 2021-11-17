@@ -1,5 +1,6 @@
 #pragma once
 #include "customer.h"
+#include <string>
 class Company : Customer{
     public:
         std::string getVAT();
@@ -7,6 +8,9 @@ class Company : Customer{
 
         int getVolumeDiscount();
         void setVolumeDiscount(int);
+
+        Company();
+        ~Company();
 
     private:
         std::string VAT;

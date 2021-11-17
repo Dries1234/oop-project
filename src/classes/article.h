@@ -20,6 +20,9 @@ class Article{
 
         char getType();
         void setType(char);
+
+        Article();
+        ~Article();
         
     private:
         std::string name;

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 class Customer{
     public:
         std::string getName();
@@ -9,7 +9,11 @@ class Customer{
         void setAddress(std::string);
 
         char getType();
-        void setType(char);      
+        void setType(char);
+
+        Customer();
+        ~Customer();
+              
     private:
         std::string name;
         std::string address;

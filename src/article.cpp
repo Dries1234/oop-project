@@ -1,4 +1,4 @@
-#include "article.h"
+#include "classes/article.h"
 
 std::string Article::getName()
 {
@@ -58,4 +58,14 @@ char Article::getType()
 void Article::setType(char t)
 {
     type = t;
+}
+
+Article::Article() 
+{
+    
+}
+
+Article::~Article() 
+{
+    
 }

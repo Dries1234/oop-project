@@ -1,4 +1,4 @@
-#include "company.h"
+#include "classes/company.h"
 #include <string>
 std::string Company::getVAT() 
 {
@@ -12,10 +12,20 @@ void Company::setVAT(std::string v)
 
 int Company::getVolumeDiscount() 
 {
+    return volumeDiscount;
+}
+
+void Company::setVolumeDiscount(int vold) 
+{
+    volumeDiscount = vold;
+}
+
+Company::Company() 
+{
     
 }
 
-void Company::setVolumeDiscount(int) 
+Company::~Company() 
 {
     
 }

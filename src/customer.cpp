@@ -1,4 +1,4 @@
-#include "customer.h"
+#include "classes/customer.h"
 #include <string>
 
 std::string Customer::getName() 
@@ -29,4 +29,14 @@ char Customer::getType()
 void Customer::setType(char t) 
 {
     type = t;
+}
+
+Customer::Customer() 
+{
+    
+}
+
+Customer::~Customer() 
+{
+    
 }

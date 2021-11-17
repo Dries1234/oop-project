@@ -1,6 +1,8 @@
-#include "tireCenter.h"
+#include "classes/tireCenter.h"
 #include <string>
 #include <vector>
+
+
 
 std::string TireCenter::getName(){return name;}
 void TireCenter::setName(std::string n){name = n;}
@@ -13,4 +15,14 @@ void TireCenter::setArticles(std::vector<Article> arts){articles = arts;}
 
 std::vector<Customer> TireCenter::getCustomers(){return customers;}
 void TireCenter::setCustomers(std::vector<Customer> custs){customers = custs;}
+
+TireCenter::TireCenter() 
+{
+    
+}
+
+TireCenter::~TireCenter() 
+{
+    
+}
 

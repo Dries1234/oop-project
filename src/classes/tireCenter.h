@@ -57,11 +57,11 @@ class TireCenter{
         std::string getAddress();
         void setAddress(std::string);
 
-        std::vector<Article> getArticles();
-        void setArticles(std::vector<Article>);
+        std::vector<Article*>& getArticles();
+        void addArticle(Article*);
 
-        std::vector<Customer> getCustomers();
-        void setCustomers(std::vector<Customer>);
+        std::vector<Customer*>& getCustomers();
+        void addCustomer(Customer);
 
         TireCenter();
         ~TireCenter();
@@ -69,8 +69,8 @@ class TireCenter{
     private:
         std::string name;
         std::string address;
-        std::vector<Article> articles;
-        std::vector<Customer> customers;
+        std::vector<Article*> articles;
+        std::vector<Customer*> customers;
 
 };
 

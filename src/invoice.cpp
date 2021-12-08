@@ -10,12 +10,12 @@ void Invoice::setCustomer(Customer c)
     customer = c;
 }
 
-std::vector<Article> Invoice::getArticles() 
+std::vector<Article *> Invoice::getArticles() 
 {
     return articles;
 }
 
-void Invoice::setArticles(std::vector<Article> a) 
+void Invoice::setArticles(std::vector<Article*> a) 
 {
     articles = a;
 }

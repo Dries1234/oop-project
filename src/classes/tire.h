@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
-#include <string>
+#include "article.h"
 
-class Tire{
+
+class Tire: public Article{
     public:
         int getWidth();
         void setWidth(int);
@@ -16,7 +17,13 @@ class Tire{
         char getSeason();
         void setSeason(char);
 
-        Tire();
+        char getType();
+        void print();
+
+        Tire(std::string name, std::string manufacturer,
+        int stock, int diameter, float price,
+        //Tire specific
+        int width, int height, std::string speedIndex, char season);
         ~Tire();
 
     private:

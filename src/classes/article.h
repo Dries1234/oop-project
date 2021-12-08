@@ -18,13 +18,15 @@ class Article{
         float getPrice();
         void setPrice(float);
 
-        char getType();
+        virtual char getType() = 0;
         void setType(char);
+        virtual void print();
 
-        Article();
+        Article(std::string name, std::string manufacturer,
+        int stock, int diameter, float price);
         ~Article();
         
-    private:
+    protected:
         std::string name;
         std::string manufacturer;
         int stock;

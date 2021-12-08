@@ -1,6 +1,6 @@
 #include <iostream>
 #include "classes/menus.h"
-#include "classes/tireCenter.h"
+
 #include <vector>
 #include <string>
 #include <sstream>
@@ -37,4 +37,9 @@ Functions Menus::loginMenu(){
     }while(!(option >= 1 && option <=2));
 
     return static_cast<Functions>(option-1); // returns enum
+}
+
+void Menus::addArticleMenu(TireCenter& t){
+    Article* a = createArticle();
+    addArticle(t,a);
 }

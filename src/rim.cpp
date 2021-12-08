@@ -1,5 +1,5 @@
 #include "classes/rim.h"
-
+#include <iostream>
 bool Rim::getAluminium() 
 {
     return aluminium;
@@ -30,7 +30,30 @@ void Rim::setWidth(int w)
     width = w;
 }
 
-Rim::Rim() 
+char Rim::getType(){
+    return 'r';
+}
+void Rim::print(){
+    std::cout << "+++++++++++++++++++++++ Tire +++++++++++++++++++++++" <<std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Manufacturer: " << manufacturer << std::endl;
+    std::cout << "Stock: " << stock << std::endl;
+    std::cout << "Diameter: " << diameter << std::endl;
+    std::cout << "Price: " << price << std::endl;
+    std::cout << "Type: " << type << std::endl;
+    std::cout << "Width: " << width << std::endl;
+    std::cout << "Aluminium: " << aluminium << std::endl;
+    std::cout << "Color: " << color << std::endl;
+
+
+}
+
+Rim::Rim(std::string name, std::string manufacturer,
+        int stock, int diameter, float price,
+        //Rim specific
+        int width, bool aluminium, std::string color)
+    : Article(name, manufacturer, stock, diameter, price),
+        width(width), aluminium(aluminium), color(color)
 {
     
 }

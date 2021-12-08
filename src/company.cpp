@@ -1,5 +1,6 @@
 #include "classes/company.h"
 #include <string>
+
 std::string Company::getVAT() 
 {
     return VAT;   

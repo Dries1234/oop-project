@@ -1,4 +1,5 @@
 #include "classes/article.h"
+#include <iostream>
 
 std::string Article::getName()
 {
@@ -59,11 +60,12 @@ void Article::setType(char t)
 {
     type = t;
 }
-
-Article::Article() 
+Article::Article(std::string name, std::string manufacturer, int stock, int diameter, float price)
+: name(name), manufacturer(manufacturer), stock(stock), diameter(diameter), price(price)
 {
-    
+
 }
+    
 
 Article::~Article() 
 {

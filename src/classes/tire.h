@@ -19,10 +19,11 @@ class Tire: public Article{
 
         char getType();
         void print();
+        Article* clone();
 
         Tire(std::string name, std::string manufacturer,
         int stock, int diameter, float price,
-        //Tire specific
+        //Tire
         int width, int height, std::string speedIndex, char season);
         ~Tire();
 

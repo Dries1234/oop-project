@@ -14,10 +14,10 @@ class Rim : public Article{
 
         char getType();
         void print();
-
+        Article* clone();
         Rim(std::string name, std::string manufacturer,
         int stock, int diameter, float price,
-        //Rim specific
+        //Rim
         int width, bool aluminium, std::string color);
         ~Rim();
     private:

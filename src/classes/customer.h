@@ -11,10 +11,12 @@ class Customer{
         char getType();
         void setType(char);
 
-        Customer();
-        ~Customer();
+        virtual void print();
+        Customer(std::string name, std::string address, char type);
+        Customer() = default;
+        virtual ~Customer();
               
-    private:
+    protected:
         std::string name;
         std::string address;
         char type;

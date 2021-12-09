@@ -4,11 +4,11 @@
 #include <vector>
 class Invoice{
     public:
-        Customer getCustomer();
-        void setCustomer(Customer);
+        Customer* getCustomer();
+        void setCustomer(Customer*);
 
-        std::vector<Article*> getArticles();
-        void setArticles(std::vector<Article*>);
+        std::vector<Article*>& getArticles();
+        void setArticles(std::vector<Article*>&);
 
         float getPrice();
         void setPrice(float);
@@ -16,11 +16,15 @@ class Invoice{
         int getDiscount();
         void setDiscount(int);
 
+        float calculateDiscount();
+        float calculatePrice();
+
+        void print();
         Invoice();
         ~Invoice();
 
     private:
-        Customer customer;
+        Customer* customer;
         std::vector<Article*> articles;
         float price;
         int discount;

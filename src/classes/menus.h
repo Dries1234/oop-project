@@ -8,5 +8,7 @@ class Menus {
         Perms drawActionMenus(std::vector<Perms> permissions);
         Functions loginMenu();
         void addArticleMenu(TireCenter& t);
-
+        int searchArticleMenu();
+        int searchCustomerMenu();
+        void addCustomerMenu(TireCenter& t);
 };

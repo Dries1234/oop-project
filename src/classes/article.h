@@ -22,9 +22,11 @@ class Article{
         void setType(char);
         virtual void print();
 
+        virtual Article* clone() =0;
+
         Article(std::string name, std::string manufacturer,
         int stock, int diameter, float price);
-        ~Article();
+        virtual ~Article();
         
     protected:
         std::string name;

@@ -4,6 +4,7 @@
 #include <map>
 #include "article.h"
 #include "customer.h"
+#include "invoice.h"
 
 enum class Perms {
     A_ADD,
@@ -16,10 +17,12 @@ enum class Perms {
     C_DELETE,
     C_CHANGE,
     C_ADD,
+    C_SEARCH,
 
     O_PLACE,
 
-    LENGTH //length of enum
+    TC_UPDATE,
+    P_QUIT
 };
 
 const std::map<Perms, std::string> permDescription{
@@ -30,9 +33,12 @@ const std::map<Perms, std::string> permDescription{
     {Perms::A_SEARCH, "Search article"},
     {Perms::I_CHECK, "Check invoices"},
     {Perms::C_ADD, "Add customer"},
+    {Perms::C_SEARCH, "Search a customer"},
     {Perms::C_CHANGE, "Change customer"},
     {Perms::C_DELETE, "Delete customer"},
     {Perms::O_PLACE, "Place order"},
+    {Perms::TC_UPDATE, "Update TireCenter"},
+    {Perms::P_QUIT, "Quit program"},
 };
 
 enum class Functions{
@@ -42,11 +48,11 @@ enum class Functions{
 
 const std::vector<Perms> permissionVector[]{
        //owner
-    {Perms::A_ADD, Perms::A_REMOVE, Perms::A_CHANGE, Perms::A_SEARCH, 
-    Perms::I_CHECK, Perms::C_DELETE, Perms::C_CHANGE, 
-    Perms::C_ADD, Perms::O_PLACE},
+    {Perms::A_ADD, Perms::A_SEARCH, Perms::A_CHANGE, Perms::A_REMOVE, 
+    Perms::I_CHECK, Perms::C_ADD, Perms::C_SEARCH, 
+    Perms::C_CHANGE, Perms::C_DELETE, Perms::O_PLACE, Perms::TC_UPDATE,Perms::P_QUIT},
     //employee
-    {Perms::A_CHANGE, Perms::I_CHECK, Perms::O_PLACE, Perms::C_CHANGE, Perms::C_ADD}
+    {Perms::A_CHANGE, Perms::I_CHECK, Perms::O_PLACE, Perms::C_CHANGE, Perms::C_ADD, Perms::C_SEARCH, Perms::P_QUIT}
 };
 
 class TireCenter{
@@ -61,8 +67,12 @@ class TireCenter{
         void addArticle(Article*);
 
         std::vector<Customer*>& getCustomers();
-        void addCustomer(Customer);
+        void addCustomer(Customer*);
 
+        std::vector<Invoice*>&getInvoices();
+        void addInvoice(Invoice*);
+
+        void update();
         TireCenter();
         ~TireCenter();
 
@@ -71,6 +81,7 @@ class TireCenter{
         std::string address;
         std::vector<Article*> articles;
         std::vector<Customer*> customers;
+        std::vector<Invoice*> invoices;
 
 };
 

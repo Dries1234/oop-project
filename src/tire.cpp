@@ -41,7 +41,7 @@ void Tire::setSeason(char se)
 }
 
 char  Tire::getType(){
-    return 't';
+    return type;
 }
 void Tire::print(){
     std::cout << "+++++++++++++++++++++++ Tire +++++++++++++++++++++++" <<std::endl;
@@ -55,6 +55,11 @@ void Tire::print(){
     std::cout << "height: " << height << std::endl;
     std::cout << "speedIndex: " << speedIndex << std::endl;
     std::cout << "season: " << season << std::endl;
+    std::cout << std::endl <<std::endl;
+}
+
+Article* Tire::clone(){
+    return new Tire(*this);
 }
 
 Tire::Tire(std::string name, std::string manufacturer,
@@ -64,7 +69,7 @@ Tire::Tire(std::string name, std::string manufacturer,
     :Article(name,manufacturer,stock,diameter,price),
     width(width), height(height), speedIndex(speedIndex), season(season)
 {
-
+    type = 't';
 }
 
 Tire::~Tire() 

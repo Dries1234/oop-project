@@ -43,3 +43,44 @@ void Menus::addArticleMenu(TireCenter& t){
     Article* a = createArticle();
     addArticle(t,a);
 }
+
+void Menus::addCustomerMenu(TireCenter& t){
+    Customer * c = createCustomer();
+    addCustomer(t, c);
+}
+/**
+ * Returns: An integer from 0-2
+ *         0: Tire
+ *         1: Rim
+ *         2: Size
+ **/
+int Menus::searchArticleMenu(){
+    int option;
+    do {
+        std::cout << "======= Search menu =======" << std::endl
+        << "\t1. Tires" << std::endl
+        << "\t2. Rims" << std::endl
+        << "\t3. Size" << std::endl;
+        std::cout << "Pick one: ";
+        std::cin >> option;
+    }while(!(option >= 1 && option <= 3));
+
+    return (option-1);
+}
+/**
+ * Returns: An integer from 0-2
+ *         0: Private
+ *         1: Company
+ *      
+ **/
+int Menus::searchCustomerMenu(){
+    int option;
+     do{
+        std::cout << "======= Search Customers =======" << std::endl
+        << "\t1. Private" << std::endl
+        << "\t2. Company" << std::endl;
+        std::cin.ignore();
+        std::cin >> option;
+    }while(!(option >= 1 && option <=2));
+    return(option-1);
+}

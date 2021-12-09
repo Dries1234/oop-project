@@ -31,10 +31,10 @@ void Rim::setWidth(int w)
 }
 
 char Rim::getType(){
-    return 'r';
+    return type;
 }
 void Rim::print(){
-    std::cout << "+++++++++++++++++++++++ Tire +++++++++++++++++++++++" <<std::endl;
+    std::cout << "+++++++++++++++++++++++ Rim +++++++++++++++++++++++" <<std::endl;
     std::cout << "Name: " << name << std::endl;
     std::cout << "Manufacturer: " << manufacturer << std::endl;
     std::cout << "Stock: " << stock << std::endl;
@@ -44,8 +44,11 @@ void Rim::print(){
     std::cout << "Width: " << width << std::endl;
     std::cout << "Aluminium: " << aluminium << std::endl;
     std::cout << "Color: " << color << std::endl;
+    std::cout << std::endl <<std::endl;
 
-
+}
+Article* Rim::clone(){
+    return new Rim(*this);
 }
 
 Rim::Rim(std::string name, std::string manufacturer,
@@ -55,7 +58,7 @@ Rim::Rim(std::string name, std::string manufacturer,
     : Article(name, manufacturer, stock, diameter, price),
         width(width), aluminium(aluminium), color(color)
 {
-    
+    type = 'r';
 }
 
 Rim::~Rim() 

@@ -1,7 +1,7 @@
 #pragma once
 #include "customer.h"
 #include <string>
-class Company : Customer{
+class Company : public Customer{
     public:
         std::string getVAT();
         void setVAT(std::string);
@@ -9,7 +9,12 @@ class Company : Customer{
         int getVolumeDiscount();
         void setVolumeDiscount(int);
 
-        Company();
+        void print();
+        Company(
+            std::string name, std::string address, char type,
+            //company
+            std::string VAT, int volumeDiscount
+        );
         ~Company();
 
     private:

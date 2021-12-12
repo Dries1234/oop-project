@@ -42,6 +42,7 @@ void placeOrder(TireCenter &tireCenter)
     int choice;
     std::vector<Article *> orderVector;
     auto articles = tireCenter.getArticles();
+    Invoice *in;
     do
     {
         std::cout << "======= Order Menu =======" << std::endl
@@ -72,12 +73,20 @@ void placeOrder(TireCenter &tireCenter)
             }
         }
     } while (choice != 2 && choice != 3);
-    Invoice *in = createInvoice(tireCenter, orderVector);
-    if (in == NULL)
-    {
-        return;
+    switch(choice){
+        case 2:
+            in = createInvoice(tireCenter, orderVector);
+            if (in == NULL)
+            {
+                return;
+            }
+            tireCenter.addInvoice(in);
+            break;
+        case 3:
+            return;
+            break;
     }
-    tireCenter.addInvoice(in);
+
 }
 
 Invoice *createInvoice(TireCenter &tireCenter, std::vector<Article *> orderVector)

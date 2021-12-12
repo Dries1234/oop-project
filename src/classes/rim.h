@@ -1,6 +1,7 @@
 #pragma once
 #include "article.h"
 #include <string>
+#include <fstream>
 class Rim : public Article{
     public:
         bool getAluminium();
@@ -15,6 +16,10 @@ class Rim : public Article{
         char getType();
         void print();
         Article* clone();
+
+        std::stringstream exp();
+        void loadData(std::istream&);
+        Rim() =default;
         Rim(std::string name, std::string manufacturer,
         int stock, int diameter, float price,
         //Rim

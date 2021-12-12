@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "article.h"
-
+#include <fstream>
 
 class Tire: public Article{
     public:
@@ -21,6 +21,9 @@ class Tire: public Article{
         void print();
         Article* clone();
 
+        std::stringstream exp();
+        void loadData(std::istream&);
+        Tire() =default;
         Tire(std::string name, std::string manufacturer,
         int stock, int diameter, float price,
         //Tire

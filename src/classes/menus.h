@@ -11,4 +11,7 @@ class Menus {
         int searchArticleMenu();
         int searchCustomerMenu();
         void addCustomerMenu(TireCenter& t);
+
+        Menus();
+        ~Menus();
 };

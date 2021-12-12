@@ -90,7 +90,7 @@ void Invoice::print(){
     std::cout << "Articles: " << std::endl;
     int count = 1;
     for(auto &article : articles){
-        std::cout << count << ": " << article->getName();
+        std::cout  << "\t" << count << ": " << article->getName() << std::endl;
         count++;
     }
     std::cout << "Price: " << calculatePrice() << std::endl;

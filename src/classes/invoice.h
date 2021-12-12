@@ -19,6 +19,7 @@ class Invoice{
         float calculateDiscount();
         float calculatePrice();
 
+        
         void print();
         Invoice();
         ~Invoice();

@@ -1,5 +1,7 @@
 #include "classes/article.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 std::string Article::getName()
 {
@@ -86,3 +88,17 @@ Article::~Article()
 {
     
 }
+
+std::ostream& operator<<(std::ostream& output, Article& a) 
+{
+ std::string input = a.exp().str();
+
+ return (output << input);   
+}
+
+std::istream& operator>>(std::istream& input, Article& a)
+{
+    a.loadData(input);
+    return input;
+}
+

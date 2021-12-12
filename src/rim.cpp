@@ -1,5 +1,6 @@
 #include "classes/rim.h"
 #include <iostream>
+#include <sstream>
 bool Rim::getAluminium() 
 {
     return aluminium;
@@ -47,8 +48,67 @@ void Rim::print(){
     std::cout << std::endl <<std::endl;
 
 }
+
+
 Article* Rim::clone(){
     return new Rim(*this);
+}
+std::stringstream Rim::exp(){
+    std::stringstream out;
+    out << type << std::endl 
+    << name << std::endl 
+    << manufacturer << std::endl
+    << stock << std::endl
+    << diameter <<std::endl
+    << price <<std::endl
+    << width << std::endl
+    << aluminium << std::endl
+    << color << std::endl;
+    return out;
+}
+
+void Rim::loadData(std::istream& input){
+    std::string buffer;
+    //name
+    std::string name;
+    std::getline(input, name);
+    //manufacturer
+    std::string manufacturer;
+    std::getline(input, manufacturer);
+    //stock
+    int stock;
+    std::getline(input,buffer);
+    stock = std::stoi(buffer);
+    //diameter
+    int diameter;
+    std::getline(input, buffer);
+    diameter = std::stoi(buffer);
+    //price
+    float price;
+    std::getline(input,buffer);
+    price = std::stof(buffer);
+    //width
+    int width;
+    std::getline(input,buffer);
+    width = std::stoi(buffer);
+    //aluminium
+    bool aluminium;
+    std::getline(input,buffer);
+    aluminium = std::stoi(buffer);
+    //color
+    std::string color;
+    std::getline(input,color);
+
+    setName(name);
+    setManufacturer(manufacturer);
+    setStock(stock);
+    setDiameter(diameter);
+    setPrice(price);
+    setWidth(width);
+    setAluminium(aluminium);
+    setColor(color);
+    setType('r');
+    
 }
 
 Rim::Rim(std::string name, std::string manufacturer,

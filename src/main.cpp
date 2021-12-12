@@ -2,11 +2,17 @@
 #include "classes/tireCenter.h"
 #include "classes/menus.h"
 #include "classes/actions.h"
+#include "classes/fileHandler.h"
 int main(){
+    FileHandler fh;
     Menus menus;
     TireCenter tireCenter;
+
+    fh.loadData(tireCenter);
+
     int user = (int)menus.loginMenu();
-    while(true){
+    bool running = true;
+    while(running){
         Perms action = menus.drawActionMenus(permissionVector[user]);
 
         switch(action){
@@ -44,10 +50,11 @@ int main(){
                 tireCenter.update();
                 break;
             case Perms::P_QUIT:
-                return 0;
+                running = false;
                 break;
         }
     }
+    fh.saveData(tireCenter);
     return 0;
 
 }

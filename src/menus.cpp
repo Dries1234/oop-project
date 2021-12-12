@@ -48,6 +48,16 @@ void Menus::addCustomerMenu(TireCenter& t){
     Customer * c = createCustomer();
     addCustomer(t, c);
 }
+
+Menus::Menus() 
+{
+    
+}
+
+Menus::~Menus() 
+{
+    
+}
 /**
  * Returns: An integer from 0-2
  *         0: Tire

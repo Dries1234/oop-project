@@ -5,7 +5,14 @@ class FileHandler{
         void saveData(TireCenter&);
         void loadData(TireCenter&);
 
-        void loadArticle(std::istream&);
+        std::ifstream inputFile(std::string);
+        std::ofstream outputFile(std::string);
+
+        void saveArticles(TireCenter&);
+        void saveCustomers(TireCenter&);
+
+        void loadArticles(TireCenter&);
+        void loadCustomers(TireCenter&);
 
         FileHandler();
         ~FileHandler();

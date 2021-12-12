@@ -10,11 +10,15 @@ class Company : public Customer{
         void setVolumeDiscount(int);
 
         void print();
+
+        std::stringstream exp();
+        void loadData(std::istream&);
         Company(
             std::string name, std::string address, char type,
             //company
             std::string VAT, int volumeDiscount
         );
+        Company() =default;
         ~Company();
 
     private:

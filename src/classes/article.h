@@ -28,7 +28,7 @@ class Article{
         int stock, int diameter, float price);
         virtual ~Article();
         friend std::ostream& operator<<(std::ostream& output, Article& a);
-        friend std::istream& operator>>(std::istream& output, Article& a);
+        friend std::istream& operator>>(std::istream& input, Article& a);
 
         virtual std::stringstream exp() = 0;
         virtual void loadData(std::istream&) =0;

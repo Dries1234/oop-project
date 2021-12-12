@@ -89,6 +89,7 @@ Article::~Article()
     
 }
 
+
 std::ostream& operator<<(std::ostream& output, Article& a) 
 {
  std::string input = a.exp().str();

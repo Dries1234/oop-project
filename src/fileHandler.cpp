@@ -3,17 +3,24 @@
 #include "classes/tireCenter.h"
 #include "classes/tire.h"
 #include "classes/rim.h"
+#include "classes/customer.h"
+#include "classes/company.h"
 #include <iostream>
 void FileHandler::saveData(TireCenter& tireCenter) 
 {
-    std::string path = "save/articles";
-    std::ofstream stream{path, std::ios::out};
-    if (!stream)
-    {
-        std::cerr << "The file: " << path << " cant't be opened!" << std::endl;
-        exit(1);
-    }
+   saveArticles(tireCenter);
+   saveCustomers(tireCenter);
 
+}
+void FileHandler::loadData(TireCenter& tireCenter) 
+{
+    loadArticles(tireCenter);
+    loadCustomers(tireCenter);
+}
+
+
+void FileHandler::saveArticles(TireCenter& tireCenter){
+    std::ofstream stream = outputFile("save/articles");
     stream << tireCenter.getArticles().size() << std::endl;
     for(auto article : tireCenter.getArticles()){
         stream << *article;
@@ -21,15 +28,17 @@ void FileHandler::saveData(TireCenter& tireCenter)
     stream.close();
 }
 
-void FileHandler::loadData(TireCenter& tireCenter) 
-{
-    std::string path = "save/articles";
-    std::ifstream stream{path, std::ios::in};
-    if (!stream)
-    {
-        std::cerr << "The file" << path << " can't be opened!";
-        exit(EXIT_FAILURE);
+void FileHandler::saveCustomers(TireCenter& tireCenter){
+    std::ofstream stream = outputFile("save/customers");
+    stream << tireCenter.getCustomers().size() << std::endl;
+    for(auto customer : tireCenter.getCustomers()){
+        stream << *customer;
     }
+    stream.close();
+}
+
+void FileHandler::loadArticles(TireCenter& tireCenter){
+    std::ifstream stream = inputFile("save/articles");
     int n;
     std::string buffer;
     std::getline(stream,buffer);
@@ -54,9 +63,56 @@ void FileHandler::loadData(TireCenter& tireCenter)
         tireCenter.addArticle(article);
     }
     stream.close();
+}
 
+void FileHandler::loadCustomers(TireCenter& tireCenter){
+    std::ifstream stream = inputFile("save/customers");
+    int n;
+    std::string buffer;
+    std::getline(stream,buffer);
+    if(buffer == ""){ n = 0; }
+    else { n = std::stoi(buffer); }
+    Customer* customer;
+
+    for(int i = 0; i < n; i++)
+    {
+        // check for type
+        std::string type;
+        std::getline(stream, type);
+        if(type[0] == 'c')
+        {
+            customer = new Company();
+        }
+        else if(type[0] == 'p')
+        {
+            customer = new Customer();
+        }
+        stream >> *customer;
+        tireCenter.addCustomer(customer);
+    }
+    stream.close();
 
 }
+
+std::ofstream FileHandler::outputFile(std::string path){
+    std::ofstream stream{path, std::ios::out};
+    if (!stream)
+    {
+        std::cerr << "The file: " << path << " cant't be opened!" << std::endl;
+        exit(1);
+    }
+    return stream;
+}
+std::ifstream FileHandler::inputFile(std::string path){
+    std::ifstream stream{path, std::ios::in};
+    if (!stream)
+    {
+        std::cerr << "The file" << path << " can't be opened!";
+        exit(EXIT_FAILURE);
+    }
+    return stream;
+}
+
 
 
 

@@ -44,11 +44,11 @@ void Invoice::setDiscount(int d)
 }
 
 float Invoice::calculateDiscount(){
-    int percent = 10;
+    float percent = 10;
     int tires;
     std::map<int,int> tiremap;
     std::map<int,int> rimmap;
-    float discountAmount = 0;;
+    float discountAmount = 0;
     for(auto &e : articles){
         if(e->getType() == 't')
         {
@@ -62,7 +62,7 @@ float Invoice::calculateDiscount(){
     if(customer->getType() == 'p'){
         for(auto e : tiremap){
             if(e.second >= 4 && rimmap[e.first] >=4){
-                discountAmount = calculatePrice() * (percent/100);
+                discountAmount = calculatePrice() * (percent/(float)100);
             }
         }
     }
@@ -70,7 +70,7 @@ float Invoice::calculateDiscount(){
         Company* comp = dynamic_cast<Company*>(customer); // cast to company to access volumeDiscount
         if(tires >= comp->getVolumeDiscount() * 4) // 10 sets of 4
         {
-            discountAmount = calculatePrice() * (percent/100);
+            discountAmount = calculatePrice() * (percent/ (float)100);
         }
     }
     

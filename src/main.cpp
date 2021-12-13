@@ -24,7 +24,6 @@ int main(){
 
     
     while(running){
-        std::cout << "hey" << std::endl;
         Perms action = menus.drawActionMenus(permissionVector[user]);
 
         switch(action){

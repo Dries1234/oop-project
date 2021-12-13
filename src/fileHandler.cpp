@@ -6,11 +6,13 @@
 #include "classes/customer.h"
 #include "classes/company.h"
 #include <iostream>
+
 void FileHandler::saveData(TireCenter& tireCenter) 
 {
    saveArticles(tireCenter);
    saveCustomers(tireCenter);
    saveTireCenter(tireCenter);
+   saveInvoices(tireCenter);
 
 }
 void FileHandler::loadData(TireCenter& tireCenter) 
@@ -18,6 +20,7 @@ void FileHandler::loadData(TireCenter& tireCenter)
     loadArticles(tireCenter);
     loadCustomers(tireCenter);
     loadTireCenter(tireCenter);
+    loadInvoices(tireCenter);
 }
 
 
@@ -46,9 +49,14 @@ void FileHandler::saveTireCenter(TireCenter& tireCenter)
     stream.close(); 
 }
 
-void FileHandler::saveInvoices(TireCenter&) 
+void FileHandler::saveInvoices(TireCenter& tireCenter) 
 {
-    
+    std::ofstream stream = outputFile("save/invoices");
+    stream << tireCenter.getInvoices().size() << std::endl;
+    for(auto invoice : tireCenter.getInvoices()){
+        stream << *invoice;
+    }
+    stream.close();
 }
 
 void FileHandler::loadArticles(TireCenter& tireCenter){
@@ -115,9 +123,22 @@ void FileHandler::loadTireCenter(TireCenter& tireCenter)
     stream.close();
 }
 
-void FileHandler::loadInvoices(TireCenter&) 
+void FileHandler::loadInvoices(TireCenter& tireCenter) 
 {
-    
+    std::ifstream stream = inputFile("save/invoices");
+    int n;
+    std::string buffer;
+    std::getline(stream,buffer);
+    if(buffer == ""){ n = 0; }
+    else { n = std::stoi(buffer); }
+    Invoice* invoice = new Invoice();
+
+    for(int i = 0; i < n; i++)
+    {
+        stream >> *invoice;
+        tireCenter.addInvoice(invoice);
+    }
+    stream.close();
 }
 
 std::ofstream FileHandler::outputFile(std::string path){

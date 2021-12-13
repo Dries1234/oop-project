@@ -37,6 +37,7 @@ void TireCenter::loadData(std::istream& input)
 {
     //name
     std::string name;
+    std::string address;
     std::getline(input, name);
     if(name == ""){
         name = "";
@@ -45,7 +46,6 @@ void TireCenter::loadData(std::istream& input)
     else
     {
         //address
-        std::string address;
         std::getline(input,address);
     }
 

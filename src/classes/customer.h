@@ -19,8 +19,8 @@ class Customer{
         virtual std::stringstream exp();
         virtual void loadData(std::istream&);
 
-        friend std::ostream& operator<<(std::ostream& output, Customer& c);
-        friend std::istream& operator>>(std::istream& output, Customer& c);
+        friend std::ostream& operator<<(std::ostream& output , Customer& c);
+        friend std::istream& operator>>(std::istream& input, Customer& c);
               
     protected:
         std::string name;

@@ -19,6 +19,11 @@ class Invoice{
         float calculateDiscount();
         float calculatePrice();
 
+        friend std::ostream& operator<<(std::ostream& output, Invoice& i);
+        friend std::istream& operator>>(std::istream& input, Invoice& i);
+
+        virtual std::stringstream exp();
+        virtual void loadData(std::istream&);
         
         void print();
         Invoice();

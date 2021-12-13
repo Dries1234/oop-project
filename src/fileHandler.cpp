@@ -10,12 +10,14 @@ void FileHandler::saveData(TireCenter& tireCenter)
 {
    saveArticles(tireCenter);
    saveCustomers(tireCenter);
+   saveTireCenter(tireCenter);
 
 }
 void FileHandler::loadData(TireCenter& tireCenter) 
 {
     loadArticles(tireCenter);
     loadCustomers(tireCenter);
+    loadTireCenter(tireCenter);
 }
 
 
@@ -35,6 +37,18 @@ void FileHandler::saveCustomers(TireCenter& tireCenter){
         stream << *customer;
     }
     stream.close();
+}
+
+void FileHandler::saveTireCenter(TireCenter& tireCenter) 
+{
+    std::ofstream stream = outputFile("save/tirecenter");
+    stream << tireCenter;
+    stream.close(); 
+}
+
+void FileHandler::saveInvoices(TireCenter&) 
+{
+    
 }
 
 void FileHandler::loadArticles(TireCenter& tireCenter){
@@ -92,6 +106,18 @@ void FileHandler::loadCustomers(TireCenter& tireCenter){
     }
     stream.close();
 
+}
+
+void FileHandler::loadTireCenter(TireCenter& tireCenter) 
+{
+    std::ifstream stream = inputFile("save/tirecenter");
+    stream >> tireCenter;
+    stream.close();
+}
+
+void FileHandler::loadInvoices(TireCenter&) 
+{
+    
 }
 
 std::ofstream FileHandler::outputFile(std::string path){

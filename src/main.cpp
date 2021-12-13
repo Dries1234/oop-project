@@ -10,9 +10,21 @@ int main(){
 
     fh.loadData(tireCenter);
 
+    std::cout << R"(  _______ _           _____           _            
+ |__   __(_)         / ____|         | |           
+    | |   _ _ __ ___| |     ___ _ __ | |_ ___ _ __ 
+    | |  | | '__/ _ \ |    / _ \ '_ \| __/ _ \ '__|
+    | |  | | | |  __/ |___|  __/ | | | ||  __/ |   
+    |_|  |_|_|  \___|\_____\___|_| |_|\__\___|_|   
+                                                   
+                                                   
+)" << std::endl; 
     int user = (int)menus.loginMenu();
     bool running = true;
+
+    
     while(running){
+        std::cout << "hey" << std::endl;
         Perms action = menus.drawActionMenus(permissionVector[user]);
 
         switch(action){

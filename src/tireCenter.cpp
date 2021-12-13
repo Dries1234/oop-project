@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 
 
 
@@ -20,6 +21,52 @@ void TireCenter::addCustomer(Customer* cust){customers.push_back(cust);}
 std::vector<Invoice*>& TireCenter::getInvoices(){return invoices;}
 void TireCenter::addInvoice(Invoice* inv){invoices.push_back(inv);}
 
+
+std::stringstream TireCenter::exp() 
+{
+    std::stringstream out;
+    out << name << std::endl 
+    << address << std::endl;
+
+    return out;
+}
+
+
+
+void TireCenter::loadData(std::istream& input)
+{
+    //name
+    std::string name;
+    std::getline(input, name);
+    if(name == ""){
+        name = "";
+        address = "";
+    }
+    else
+    {
+        //address
+        std::string address;
+        std::getline(input,address);
+    }
+
+    setName(name);
+    setAddress(address);
+}
+
+
+
+
+std::ostream& operator<<(std::ostream& output, TireCenter& tireCenter) 
+{
+    std::string input = tireCenter.exp().str();
+
+    return (output << input); 
+}
+std::istream& operator>>(std::istream& input, TireCenter& tireCenter) 
+{
+    tireCenter.loadData(input);
+    return input;
+}
 void TireCenter::update(){
     std::string name;
     std::string address;
@@ -28,6 +75,10 @@ void TireCenter::update(){
     std::getline(std::cin, name);
     std::cout << "What is the address of this TireCenter: ";
     std::getline(std::cin, address);
+    std::cout << std::endl;
+
+    setName(name);
+    setAddress(address);
     
 }
 

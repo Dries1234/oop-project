@@ -73,6 +73,13 @@ class TireCenter{
         std::vector<Invoice*>&getInvoices();
         void addInvoice(Invoice*);
 
+        friend std::ostream& operator<<(std::ostream& output, TireCenter& tireCenter);
+        friend std::istream& operator>>(std::istream& input, TireCenter& tireCenter);
+
+        std::stringstream exp();
+        
+        void loadData(std::istream&);
+
         void update();
         TireCenter();
         ~TireCenter();

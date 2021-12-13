@@ -89,6 +89,14 @@ TireCenter::TireCenter()
 
 TireCenter::~TireCenter() 
 {
-    
+    for(Article* article : getArticles()){
+        delete article;
+    }
+    for(Customer* customer : getCustomers()){
+        delete customer;
+    }
+    for(Invoice* invoice : getInvoices()){
+        delete invoice;
+    }
 }
 

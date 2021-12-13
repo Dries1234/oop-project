@@ -178,5 +178,9 @@ Invoice::Invoice()
 
 Invoice::~Invoice() 
 {
+    delete customer;
+    for(Article* article : getArticles()){
+        delete article;
+    }
     
 }

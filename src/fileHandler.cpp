@@ -131,10 +131,10 @@ void FileHandler::loadInvoices(TireCenter& tireCenter)
     std::getline(stream,buffer);
     if(buffer == ""){ n = 0; }
     else { n = std::stoi(buffer); }
-    Invoice* invoice = new Invoice();
 
     for(int i = 0; i < n; i++)
     {
+        Invoice* invoice = new Invoice();
         stream >> *invoice;
         tireCenter.addInvoice(invoice);
     }

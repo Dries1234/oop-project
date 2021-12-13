@@ -9,7 +9,7 @@
 
 enum class Perms {
     A_ADD,
-    A_REMOVE,
+    A_DELETE,
     A_CHANGE,
     A_SEARCH,
 
@@ -29,7 +29,7 @@ enum class Perms {
 const std::map<Perms, std::string> permDescription{
 
     {Perms::A_ADD, "Add article"},
-    {Perms::A_REMOVE, "Remove article"},
+    {Perms::A_DELETE, "Remove article"},
     {Perms::A_CHANGE, "Change article"},
     {Perms::A_SEARCH, "Search article"},
     {Perms::I_CHECK, "Check invoices"},
@@ -49,7 +49,7 @@ enum class Functions{
 
 const std::vector<Perms> permissionVector[]{
        //owner
-    {Perms::A_ADD, Perms::A_SEARCH, Perms::A_CHANGE, Perms::A_REMOVE, 
+    {Perms::A_ADD, Perms::A_SEARCH, Perms::A_CHANGE, Perms::A_DELETE, 
     Perms::I_CHECK, Perms::C_ADD, Perms::C_SEARCH, 
     Perms::C_CHANGE, Perms::C_DELETE, Perms::O_PLACE, Perms::TC_UPDATE,Perms::P_QUIT},
     //employee

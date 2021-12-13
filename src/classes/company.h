@@ -11,8 +11,11 @@ class Company : public Customer{
 
         void print();
 
+        Customer* clone();
+
         std::stringstream exp();
         void loadData(std::istream&);
+        
         Company(
             std::string name, std::string address, char type,
             //company

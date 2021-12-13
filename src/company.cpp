@@ -32,6 +32,11 @@ void Company::print(){
 
 }
 
+Customer* Company::clone() 
+{
+    return new Company(*this);
+}
+
 std::stringstream Company::exp(){
     std::stringstream out;
     out << type << std::endl 

@@ -16,6 +16,8 @@ class Customer{
         Customer() = default;
         virtual ~Customer();
 
+        virtual Customer* clone();
+
         virtual std::stringstream exp();
         virtual void loadData(std::istream&);
 

@@ -30,7 +30,7 @@ int main(){
             case Perms::A_ADD:
                 menus.addArticleMenu(tireCenter);
                 break;
-            case Perms::A_REMOVE:
+            case Perms::A_DELETE:
                 deleteArticle(tireCenter);
                 break;
             case Perms::A_CHANGE:

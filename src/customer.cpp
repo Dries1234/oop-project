@@ -53,6 +53,11 @@ Customer::~Customer()
     
 }
 
+Customer* Customer::clone() 
+{
+    return new Customer(*this);
+}
+
 std::stringstream Customer::exp() 
 {
     std::stringstream out;

@@ -99,7 +99,7 @@ Invoice *createInvoice(TireCenter &tireCenter, std::vector<Article *> orderVecto
     }
     Invoice *inv = new Invoice();
     auto customers = tireCenter.getCustomers();
-    inv->setCustomer(customers[index]);
+    inv->setCustomer(customers[index]->clone());
     inv->setArticles(orderVector);
     float price = inv->calculatePrice();
     float discount = inv->calculateDiscount();

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "classes/menus.h"
+#include "classes/util.h"
+#include <algorithm>
 
 #include <vector>
 #include <string>
@@ -45,7 +47,14 @@ void Menus::addArticleMenu(TireCenter& t){
 }
 
 void Menus::addCustomerMenu(TireCenter& t){
-    Customer * c = createCustomer();
+    Util util;
+    Customer * c = createCustomer(t);
+    for(auto cust : t.getCustomers()){
+        if(util.asciiToLower(cust->getName()) == util.asciiToLower(c->getName())){
+            std::cout << "Creating customer failed!" << std::endl << "That customer already exists!" << std::endl << std::endl;
+            return;
+        }
+    }
     addCustomer(t, c);
 }
 
@@ -94,3 +103,4 @@ int Menus::searchCustomerMenu(){
     }while(!(option >= 1 && option <=2));
     return(option-1);
 }
+

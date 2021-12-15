@@ -146,7 +146,7 @@ void changeCustomer(TireCenter &tireCenter)
     }
     Customer *customer = customers.at(index);
     customer->print();
-    customer = createCustomer();
+    customer = createCustomer(tireCenter);
     customers[index] = customer;
 }
 
@@ -219,7 +219,7 @@ int searchCustomer(TireCenter &tireCenter, bool choose)
     }
 }
 
-Customer *createCustomer()
+Customer *createCustomer(TireCenter& tireCenter)
 {
     std::cout << "======= Customer Creation =======" << std::endl;
     std::string name;

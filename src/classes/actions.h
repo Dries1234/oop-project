@@ -18,4 +18,4 @@ Article* createArticle();
 Invoice* createInvoice(TireCenter&, std::vector<Article*>);
 int searchArticle(TireCenter&,bool);
 int searchCustomer(TireCenter&, bool);
-Customer* createCustomer();
+Customer* createCustomer(TireCenter&);

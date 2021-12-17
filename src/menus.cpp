@@ -48,7 +48,7 @@ void Menus::addArticleMenu(TireCenter& t){
 
 void Menus::addCustomerMenu(TireCenter& t){
     Util util;
-    Customer * c = createCustomer(t);
+    Customer * c = createCustomer();
     for(auto cust : t.getCustomers()){
         if(util.asciiToLower(cust->getName()) == util.asciiToLower(c->getName())){
             std::cout << "Creating customer failed!" << std::endl << "That customer already exists!" << std::endl << std::endl;

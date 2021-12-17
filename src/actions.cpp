@@ -33,6 +33,7 @@ void changeArticle(TireCenter &tireCenter)
     }
     Article *article = articles.at(index);
     article->print();
+    delete article;
     article = createArticle();
     articles[index] = article;
 }
@@ -146,7 +147,8 @@ void changeCustomer(TireCenter &tireCenter)
     }
     Customer *customer = customers.at(index);
     customer->print();
-    customer = createCustomer(tireCenter);
+    delete customer;
+    customer = createCustomer();
     customers[index] = customer;
 }
 
@@ -219,7 +221,7 @@ int searchCustomer(TireCenter &tireCenter, bool choose)
     }
 }
 
-Customer *createCustomer(TireCenter& tireCenter)
+Customer *createCustomer()
 {
     std::cout << "======= Customer Creation =======" << std::endl;
     std::string name;

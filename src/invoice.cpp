@@ -5,6 +5,7 @@
 #include <map>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 Customer* Invoice::getCustomer() 
 {
@@ -146,9 +147,20 @@ void Invoice::print(){
     std::cout << "+++++++++++++++++++++++ Invoice +++++++++++++++++++++++" <<std::endl;
     std::cout << "Customer: " << customer->getName() << std::endl;
     std::cout << "Articles: " << std::endl;
+    std::map<std::string,int> countmap;
+    for(auto article : articles)
+    {
+        if(countmap[article->getName()])
+        {
+            countmap[article->getName()] = countmap[article->getName()]+1;
+        }
+        else{
+            countmap[article->getName()] = 1;
+        }
+    }
     int count = 1;
-    for(auto &article : articles){
-        std::cout  << "\t" << count << ": " << article->getName() << std::endl;
+    for(auto a : countmap){
+        std::cout  << "\t" << count << ": " << a.second << " x " << a.first << std::endl;
         count++;
     }
     std::cout << "Price: " << calculatePrice() << std::endl;

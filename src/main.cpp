@@ -19,6 +19,9 @@ int main(){
                                                    
                                                    
 )" << std::endl; 
+
+
+        std::cout << "Welcome to TireCenter: " << tireCenter.getName() << std::endl << std::endl;
     int user = (int)menus.loginMenu();
     bool running = true;
 

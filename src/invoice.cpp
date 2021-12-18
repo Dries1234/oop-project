@@ -49,7 +49,7 @@ void Invoice::setDiscount(int d)
 
 float Invoice::calculateDiscount(){
     float percent = 10;
-    int tires;
+    int tires = 0;
     std::map<int,int> tiremap;
     std::map<int,int> rimmap;
     float discountAmount = 0;
@@ -81,7 +81,7 @@ float Invoice::calculateDiscount(){
     return discountAmount;
 }
 float Invoice::calculatePrice(){
-    float total;
+    float total = 0;
     for(auto &e : articles){
         total += e->getPrice();
     }
@@ -114,6 +114,9 @@ void Invoice::loadData(std::istream& input)
     else if(buffer[0] == 'c'){
         c = new Company();
     }
+    else{
+        return; // invalid input will get removed on next launch
+    }
     input >> *c;
     float price;
     std::getline(input, buffer);
@@ -133,6 +136,9 @@ void Invoice::loadData(std::istream& input)
         }
         else if(buffer[0] == 'r'){
             article = new Rim();
+        }
+        else{
+            continue; // invalid input, will be cleared on next load
         }
         input >> *article;
         articlevector.push_back(article);
@@ -163,9 +169,9 @@ void Invoice::print(){
         std::cout  << "\t" << count << ": " << a.second << " x " << a.first << std::endl;
         count++;
     }
-    std::cout << "Price: " << calculatePrice() << std::endl;
-    std::cout << "Discount: " << calculateDiscount() << std::endl;
-    std::cout << "Total: " << price << std::endl;
+    std::cout << "Price: " << price << std::endl;
+    std::cout << "Discount: " << discount << std::endl;
+    std::cout << "Total: " << price - discount << std::endl;
     std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl << std::endl;
 }
 

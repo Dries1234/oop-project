@@ -164,6 +164,8 @@ void Invoice::print(){
             countmap[article->getName()] = 1;
         }
     }
+   
+
     int count = 1;
     for(auto a : countmap){
         std::cout  << "\t" << count << ": " << a.second << " x " << a.first << std::endl;
@@ -171,7 +173,12 @@ void Invoice::print(){
     }
     std::cout << "Price: " << price << std::endl;
     std::cout << "Discount: " << discount << std::endl;
-    std::cout << "Total: " << price - discount << std::endl;
+    float endPrice = price - discount;
+    if(customer->getType() == 'p'){ 
+        endPrice = endPrice * 1.21; // add BTW if its a private customer
+        std::cout << "Added btw: " << (price-discount) * 0.21 << std::endl;
+    }
+    std::cout << "Total: " << endPrice << std::endl; 
     std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl << std::endl;
 }
 

@@ -104,9 +104,8 @@ Invoice *createInvoice(TireCenter &tireCenter, std::vector<Article *> orderVecto
     inv->setArticles(orderVector);
     float price = inv->calculatePrice();
     float discount = inv->calculateDiscount();
-    float endPrice = price - discount;
-    endPrice = endPrice * 1.21; // add BTW
-    inv->setPrice(endPrice);
+
+    inv->setPrice(price);
     inv->setDiscount(discount);
 
     return inv;
@@ -234,7 +233,7 @@ Customer *createCustomer()
     std::cin.ignore();
     do
     {
-        std::cout << "Enter type of the Customer: ";
+        std::cout << "Enter type of the Customer [(p)rivate or (c)ompany]: ";
         std::getline(std::cin, buffer);
         type = buffer[0];
     } while (type != 'p' && type != 'c');
@@ -280,7 +279,7 @@ Article *createArticle()
     std::cin.ignore();
     do
     {
-        std::cout << "Enter type of the article: ";
+        std::cout << "Enter type of the article [(t)ire or (r)im]: ";
         std::getline(std::cin, buffer);
         type = buffer[0];
     } while (type != 't' && type != 'r');
@@ -298,23 +297,23 @@ Article *createArticle()
     std::cout << "Enter a manufacturer for the " << name << ": ";
     std::getline(std::cin, manufacturer);
     std::cout << "Enter stock for the " << name << ": ";
-    std::cin >> stock;
-    std::cin.ignore();
+    std::getline(std::cin, buffer);
+    stock = std::stoi(buffer);
     std::cout << "Enter diameter of the " << name << ": ";
-    std::cin >> diameter;
-    std::cin.ignore();
+    std::getline(std::cin, buffer);
+    diameter = std::stoi(buffer);
     std::cout << "Enter price of the " << name << ": ";
-    std::cin >> price;
-    std::cin.ignore();
+    std::getline(std::cin, buffer);
+    price = std::stof(buffer);
     std::cout << "Enter a width of the " << name << ": ";
-    std::cin >> width;
-    std::cin.ignore();
+    std::getline(std::cin, buffer);
+    width = std::stoi(buffer);
     switch (type)
     {
     case 't':
         std::cout << "Enter a height of the " << name << ": ";
-        std::cin >> height;
-        std::cin.ignore();
+        std::getline(std::cin, buffer);
+        height = std::stoi(buffer);
         std::cout << "Enter a speedIndex of the " << name << ": ";
         std::getline(std::cin, speedIndex);
         std::cout << "Enter a season of the " << name << ": ";
@@ -325,9 +324,9 @@ Article *createArticle()
     case 'r':
         do{
             std::cout << "Is the Rim made of aluminium? yes(1) no(0): ";
-            std::cin >> aluminium;
+            std::getline(std::cin, buffer);
+            aluminium = std::stoi(buffer);
         }while(aluminium != 1 && aluminium != 0);
-        std::cin.ignore();
         std::cout << "Enter a color of the " << name << ": ";
         std::getline(std::cin, color);
         a = new Rim(articlename, manufacturer, stock, diameter, price, width, aluminium, color);
